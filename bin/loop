@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+# Loops over ARGF, expecting revision hashes. Will checkout these revisions, 
+# print them as title and run 'run' on them. 
+
+
+directory = File.expand_path(File.dirname(__FILE__) + "/../../parslet")
+
+def get_current_rev(directory)
+  Dir.chdir(directory) do
+    out = `git log | head -1`
+    
+    return out.split(/\s/).last.chomp if $?.success? 
+  end
+  
+  fail
+end
+
+def set_current_rev(directory, revision)
+  Dir.chdir(directory) do
+    system "git checkout -q #{revision} > /dev/null"
+    fail "Could not change revision." unless $?.success?
+  end
+  
+  fail "Current revision doesn't match #{revision}" \
+    unless get_current_rev(directory) == revision
+end
+
+restore = get_current_rev(directory)
+at_exit { set_current_rev(directory, restore) }
+
+ARGF.each do |line|
+  revision, title = line.chomp.split
+  set_current_rev(directory, revision)
+  puts "At #{revision} (#{title}) ---------------"
+  
+  system File.dirname(__FILE__) + "/run"
+end
