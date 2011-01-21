@@ -6,8 +6,10 @@
 
 require 'benchmark'
 
-directory = File.dirname(__FILE__) + "/../../parslet"
+directory = File.dirname(__FILE__) + "/../../parslet/lib"
 $:.unshift directory
+
+puts "Using parslet at #{File.expand_path(directory)}"
 
 $stdin.sync = true
 Dir['benchmarks/*.rb'].sort.each do |benchmark_name|
