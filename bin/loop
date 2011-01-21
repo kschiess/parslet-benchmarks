@@ -30,9 +30,9 @@ restore = get_current_rev(directory)
 at_exit { set_current_rev(directory, restore) }
 
 ARGF.each do |line|
-  revision, title = line.chomp.split
+  revision, *title = line.chomp.split
   set_current_rev(directory, revision)
-  puts "At #{revision} (#{title}) ---------------"
+  puts "At #{revision} (#{title.join(' ')}) ---------------"
   
   system File.dirname(__FILE__) + "/run"
 end
