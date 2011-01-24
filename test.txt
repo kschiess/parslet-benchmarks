@@ -1,4 +1,3 @@
-036c7c20bc29fdf6ac349ee4f79a3267c5a0ff77 r1.0.1
 531dd19aa710c8ee4e68d2d3dabba995bbad5f82 line counting in source
 1c96561df2cc28471bb581788356d0489ccc239b no throw/catch
 25d95162955fbc8a80194296889937cccf165c39 pre item cach
