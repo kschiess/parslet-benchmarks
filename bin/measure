@@ -1,0 +1,3 @@
+CPUPROFILE=/tmp/my_app_profile \
+  RUBYOPT="-r`gem which perftools | tail -1`" \
+  ruby bin/run
