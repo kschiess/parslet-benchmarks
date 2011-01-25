@@ -277,7 +277,7 @@ class AnsiSmalltalk < Parslet::Parser
   end
 end
 
-3.times do
+30.times do
   AnsiSmalltalk.new.parse(<<-SMALLTALK.strip
     [ :some | |a b c|
       "A method to illustrate some syntax"

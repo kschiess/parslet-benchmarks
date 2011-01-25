@@ -140,7 +140,7 @@ class RequestParser < Parslet::Parser
   root :request
 end
 
-10.times do
+30.times do
   RequestParser.new.parse(<<-REQUEST)
 GET /search?q=test&hl=en&fp=1&cad=b&tch=1&ech=1&psi=DBQ4Te_qCI2Y_QaIuPSTCA12955207804903 HTTP/1.1
 Host: www.google.com
