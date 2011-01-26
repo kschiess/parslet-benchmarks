@@ -14,7 +14,10 @@ puts "Using parslet at #{File.expand_path(directory)}"
 $stdin.sync = true
 Dir['benchmarks/*.rb'].sort.each do |benchmark_name|
   print benchmark_name.ljust(40)
+  GC.start
+  GC.disable 
   puts Benchmark.measure {
     load benchmark_name
   }
+  GC.enable
 end
