@@ -25,7 +25,7 @@ class Driver < Struct.new(:suite)
     iteration = suite.new(problem_size)
     
     real_size, measure = iteration.run(variants)
-    printf "%10d: " + "%3.3f "*variants.size + "\n", 
+    printf "%10d: " + "%7.3f   "*variants.size + "\n", 
       real_size, 
       *variants.map { |v| measure[v] }
   end

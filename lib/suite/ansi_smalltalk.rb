@@ -1,19 +1,28 @@
 
 require 'benchmark'
 
+require 'parslet/export'
+require 'treetop'
+
 class Suite::AnsiSmalltalk
   def self.name
     "ansi_smalltalk"
   end
   def self.variants
-    %w(parslet)
+    %w(parslet treetop)
   end
   def self.range
     200..40_000
   end
   
+  def fix(str)
+    str.gsub('Suite::AnsiSmalltalk::Grammar', 'SuiteAnsiSmalltalkGrammar')
+  end
+  
   def initialize(n)
     @n = n
+    @grammar = Grammar.new
+    @treetop = Treetop.load_from_string(fix(@grammar.to_treetop)).new
   end
   
   # Returns effective input size and a hash mapping variants to CPU time used.
@@ -63,7 +72,10 @@ class Suite::AnsiSmalltalk
   def run_variant(variant, input)
     case variant
     when "parslet"
-      Grammar.new.parse(input)
+      @grammar.parse(input)
+    when 'treetop'
+      res = @treetop.parse(input)
+      fail unless res
     end
   end
   
