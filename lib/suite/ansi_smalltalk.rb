@@ -12,7 +12,7 @@ class Suite::AnsiSmalltalk
     %w(parslet treetop)
   end
   def self.range
-    200..40_000
+    200..10_000
   end
   
   def fix(str)
