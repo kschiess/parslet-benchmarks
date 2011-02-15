@@ -1,5 +1,0 @@
-531dd19aa710c8ee4e68d2d3dabba995bbad5f82 line counting in source
-1c96561df2cc28471bb581788356d0489ccc239b no throw/catch
-25d95162955fbc8a80194296889937cccf165c39 pre item cach
-22c3ceb757b6c36d280ffcc6b830b3e79f66e588 binary search
-a76b62dcc8e51d01a94afca5f627d8154819bfee delayed error message building

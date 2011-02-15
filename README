@@ -1,0 +1,12 @@
+Parslet benchmarks: This project helps me keep track of parsing speed. 
+
+Parslet is a small parser framework for Ruby. See
+
+  http://kschiess.github.com/parslet
+
+for more information.
+
+HACKING
+
+bin/measure     Will run parslet benchmarks in ./benchmarks using perftools.rb
+bin/run         Runs parslet benchmarks in ./benchmarks
