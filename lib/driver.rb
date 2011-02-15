@@ -20,10 +20,10 @@ class Driver < Struct.new(:suite)
   end
   
   def single_run(problem_size, variants)
-    puts "Run for #{problem_size}"
     iteration = suite.new(problem_size)
     
-    measure = iteration.run(variants)
+    real_size, measure = iteration.run(variants)
+    puts "Run for #{real_size}"
     measure.each do |variant, utime|
       puts "#{variant}: #{utime}"
     end

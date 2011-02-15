@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+directory = File.dirname(__FILE__) + "/../../parslet/lib"
+$:.unshift directory
+
+puts "Using parslet at #{File.expand_path(directory)}"
+require 'parslet'
+
+
 $:.unshift File.dirname(__FILE__) + "/../lib"
 require 'suites'
 require 'driver'
