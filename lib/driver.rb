@@ -14,6 +14,8 @@ class Driver < Struct.new(:suite)
     stop  = suite.range.last
     increment = (stop - start) / steps
     
+    printf " size       " + "%-10s"*variants.size + "\n", 
+      *variants
     start.step(stop, increment) do |current|
       single_run(current, variants)
     end
@@ -23,9 +25,8 @@ class Driver < Struct.new(:suite)
     iteration = suite.new(problem_size)
     
     real_size, measure = iteration.run(variants)
-    puts "Run for #{real_size}"
-    measure.each do |variant, utime|
-      puts "#{variant}: #{utime}"
-    end
+    printf "%10d: " + "%3.3f "*variants.size + "\n", 
+      real_size, 
+      *variants.map { |v| measure[v] }
   end
 end
