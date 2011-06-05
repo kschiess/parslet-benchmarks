@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
+gem 'treetop'
 gem 'blankslate', '~> 2'
 
 group :development do
