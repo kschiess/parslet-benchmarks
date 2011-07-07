@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
-gem 'treetop'
+gem 'rake'
 gem 'blankslate', '~> 2'
 
 group :development do
@@ -11,5 +11,6 @@ group :development do
   gem 'sdoc'
   
   gem 'guard'
+  gem 'guard-rspec'
   gem 'growl'
 end
