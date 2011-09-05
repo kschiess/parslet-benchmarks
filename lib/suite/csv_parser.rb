@@ -3,13 +3,14 @@ require 'benchmark'
 
 require 'parslet/export'
 require 'treetop'
+require 'csv'
 
 class Suite::CsvParser
   def self.name
     "csv"
   end
   def self.variants
-    %w(parslet treetop)
+    %w(parslet treetop csv)
   end
   def self.range
     200..50_000
@@ -52,6 +53,8 @@ class Suite::CsvParser
     when 'treetop'
       res = @treetop.parse(input)
       fail unless res
+    when 'csv'
+      CSV.parse(input)
     end
   end
   
