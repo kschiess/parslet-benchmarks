@@ -11,4 +11,8 @@ $:.unshift File.dirname(__FILE__) + "/../lib"
 require 'suites'
 require 'driver'
 
+puts "CSV parsing"
+Driver.new(Suite::CsvParser).run(ARGV)
+
+puts "ANSI Smalltalk subset parsing"
 Driver.new(Suite::AnsiSmalltalk).run(ARGV)
