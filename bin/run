@@ -6,7 +6,7 @@
 
 require 'benchmark'
 
-directory = File.dirname(__FILE__) + "/../../parslet/lib"
+directory = ARGV.first || (File.dirname(__FILE__) + "/../../parslet/lib") 
 $:.unshift directory
 
 puts "Using parslet at #{File.expand_path(directory)}"
