@@ -6,10 +6,18 @@
 
 require 'benchmark'
 
+# Returns a string that identifies the checked out version of a project. For
+# this to work, you need the git bash completion set up and working. 
+#
+def git_name(directory)
+  `bash -c 'cd #{directory} && source ~/tools/git-completion.bash && echo -n $(__git_ps1)'`
+end
+
 directory = ARGV.first || (File.dirname(__FILE__) + "/../../parslet/lib") 
 $:.unshift directory
 
-puts "Using parslet at #{File.expand_path(directory)}"
+directory = File.expand_path(directory)
+puts "Using parslet at #{directory}@#{git_name(directory)}"
 
 $stdin.sync = true
 Dir['benchmarks/*.rb'].sort.each do |benchmark_name|
