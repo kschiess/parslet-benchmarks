@@ -10,7 +10,7 @@ require 'benchmark'
 # this to work, you need the git bash completion set up and working. 
 #
 def git_name(directory)
-  `bash -c 'cd #{directory} && source ~/tools/git-completion.bash && echo -n $(__git_ps1)'`
+  `cd #{directory} && git log -n 1 | head -1`.split.last
 end
 
 directory = ARGV.first || (File.dirname(__FILE__) + "/../../parslet/lib") 
