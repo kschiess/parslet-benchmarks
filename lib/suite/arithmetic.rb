@@ -17,8 +17,8 @@ class Suite::Arithmetic
   class Parslet < Parslet::Parser
     root :expression
 
-    rule(:expression) { term >> (match['+-/*'] >> term).repeat(1) | term }
-    rule(:term) { factor }
+    rule(:expression) { term >> (match['+-'] >> term).repeat(1) | term }
+    rule(:term) { factor >> (match['/*'] >> factor).repeat(1) | factor }
     rule(:factor) { str('(') >> expression >> str(')') | number }
     rule(:number) { match['0-9'].repeat(1) }
   end
