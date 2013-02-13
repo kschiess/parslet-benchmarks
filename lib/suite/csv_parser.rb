@@ -13,7 +13,7 @@ class Suite::CsvParser
     %w(parslet treetop csv)
   end
   def self.range
-    200..50_000
+    200..20_000
   end
   
   def initialize(n)

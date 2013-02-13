@@ -3,6 +3,7 @@ source "http://rubygems.org"
 
 gem 'rake'
 gem 'blankslate', '~> 2'
+gem 'rsec'
 
 group :development do
   gem 'rspec'

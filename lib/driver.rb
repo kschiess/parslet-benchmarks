@@ -17,7 +17,9 @@ class Driver < Struct.new(:suite)
     printf " size       " + "%-10s"*variants.size + "\n", 
       *variants
     start.step(stop, increment) do |current|
+      GC.disable
       single_run(current, variants)
+      GC.enable
     end
   end
   
@@ -28,5 +30,8 @@ class Driver < Struct.new(:suite)
     printf "%10d: " + "%7.3f   "*variants.size + "\n", 
       real_size, 
       *variants.map { |v| measure[v] }
+
+    printf " "*17 + "%7.3f   " * (variants.size-1) + "\n", 
+      *variants.each_cons(2).map { |a,b| measure[a] / measure[b] }
   end
 end

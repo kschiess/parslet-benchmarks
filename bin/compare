@@ -11,6 +11,10 @@ $:.unshift File.dirname(__FILE__) + "/../lib"
 require 'suites'
 require 'driver'
 
+
+puts "Arithmetic parsing"
+Driver.new(Suite::Arithmetic).run(ARGV)
+
 puts "CSV parsing"
 Driver.new(Suite::CsvParser).run(ARGV)
 
